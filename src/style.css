@@ -159,3 +159,11 @@ input {
   max-height: 600px;
   top: 10px;
 }
+.name {
+  display: inline;
+}
+p.name {
+  position: relative;
+  top: 10px;
+  left: 70px;
+}
