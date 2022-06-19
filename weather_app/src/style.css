@@ -1,0 +1,161 @@
+h1 {
+  color: grey;
+  display: inline-block;
+}
+h2 {
+  margin-top: -100px;
+}
+li {
+  list-style-type: none;
+  position: relative;
+  top: -10px;
+}
+input {
+  width: 40%;
+  height: 40px;
+  position: relative;
+  top: 10px;
+  right: 30px;
+}
+.time,
+.temp {
+  font-size: smaller;
+  float: left;
+  text-align: center;
+  position: relative;
+  top: 25px;
+}
+.temp {
+  color: grey;
+  position: relative;
+  left: -85px;
+}
+.time {
+  text-decoration: underline;
+  color: darkgrey;
+  left: -40px;
+}
+.btn {
+  display: inline;
+  font-size: 20px;
+}
+#search-btn {
+  position: relative;
+  top: -32px;
+  right: -230px;
+  color: green;
+  background-color: rgba(1, 186, 1, 0.468);
+}
+#current-loc-btn {
+  position: relative;
+  top: -76px;
+  right: -370px;
+  color: #df6507;
+  background-color: #eb963ba0;
+}
+.data {
+  color: dodgerblue;
+  text-align: center;
+}
+.card {
+  background-color: #eff7fc;
+  border-color: rgba(30, 143, 255, 0.3);
+  text-align: center;
+}
+.card-now {
+  float: left;
+  right: 260px;
+  bottom: -15px;
+  top: 70px;
+  background-color: #e1f1fb;
+  max-height: 330px;
+  border-color: rgba(30, 143, 255, 0.6);
+}
+.city {
+  color: forestgreen;
+  text-align: left;
+  position: relative;
+  left: 150px;
+  top: 60px;
+}
+.time-main {
+  font-size: 35px;
+  text-align: center;
+  font-weight: 600;
+  color: dodgerblue;
+}
+.temp-main {
+  font-weight: 400;
+  display: block;
+  margin: 0 auto;
+  font-size: 65px;
+}
+.main-temp {
+  display: inline;
+}
+.C {
+  font-weight: 300;
+  font-size: 30px;
+  position: relative;
+  top: -25px;
+}
+#C,
+#F {
+  color: dodgerblue;
+  text-decoration: none;
+}
+.main-emoji {
+  font-size: 45px;
+  position: relative;
+  top: -7px;
+}
+.details-feels {
+  position: relative;
+  left: 10px;
+}
+.details-hum {
+  position: relative;
+  left: 140px;
+  bottom: 98px;
+}
+.details-pres {
+  position: relative;
+  left: 270px;
+  bottom: 196px;
+}
+.details {
+  border-color: rgba(30, 143, 255, 0.3);
+  background-color: #e7f1f8;
+}
+.emoji-week {
+  font-size: 50px;
+}
+.temp-week {
+  font-size: 40px;
+  color: dodgerblue;
+  margin-top: 10px;
+}
+.day-week {
+  color: gray;
+}
+.week {
+  position: relative;
+  left: 530px;
+  bottom: 400px;
+}
+.week1,
+.week2,
+.week3 {
+  position: relative;
+  top: -480px;
+}
+.week4,
+.week5,
+.week6 {
+  position: relative;
+  top: -450px;
+}
+.card-main {
+  max-height: 600px;
+  top: 10px;
+}
