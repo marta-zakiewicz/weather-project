@@ -27,17 +27,17 @@ function getPosition() {
   let enterCity = document.querySelector("#enter-city-input");
   let city = enterCity.value;
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=${unit}`;
-
   axios.get(apiUrl).then(getTemperature);
 }
 function getTemperature(response) {
-  let temp = Math.round(response.data.main.temp);
   let degreeDisplayed = document.querySelector(".main-temp");
-  degreeDisplayed.innerHTML = temp;
   let country = response.data.sys.country;
   let enterCity = document.querySelector("#enter-city-input");
   let city = enterCity.value;
   let h2 = document.querySelector("h2");
+
+  degreeDisplayed.innerHTML = celTempData;
+  celTempData = Math.round(response.data.main.temp);
   h2.innerHTML = `${country}, ${city}`;
 }
 function getCurrentPosition(position) {
@@ -49,28 +49,32 @@ function getCurrentPosition(position) {
   axios.get(apiUrl).then(getCurrentTemperature);
 }
 function getCurrentTemperature(response) {
-  let temp = Math.round(response.data.main.temp);
   let degreeDisplayed = document.querySelector(".main-temp");
-  degreeDisplayed.innerHTML = temp;
   let country = response.data.sys.country;
   let city = response.data.name;
   let h2 = document.querySelector("h2");
+
+  celTempData = Math.round(response.data.main.temp);
+  degreeDisplayed.innerHTML = celTempData;
   h2.innerHTML = `${country}, ${city}`;
 }
 let searchBtn = document.querySelector("#search-btn");
 searchBtn.addEventListener("click", searchCity);
 let enterCityForm = document.querySelector("#enter-city-form");
 enterCityForm.addEventListener("submit", searchCity);
+
 function degreeCel(event) {
   event.preventDefault();
   let mainTemp = document.querySelector(".main-temp");
-  mainTemp.innerHTML = "6";
+  mainTemp.innerHTML = Math.round(celTempData);
 }
 function degreeFar(event) {
   event.preventDefault();
   let mainTemp = document.querySelector(".main-temp");
-  mainTemp.innerHTML = "43";
+  let farTempFormula = celTempData * 1.8 + 32;
+  mainTemp.innerHTML = Math.round(farTempFormula);
 }
+let celTempData = null;
 let degreeC = document.querySelector("#C");
 let degreeF = document.querySelector("#F");
 degreeC.addEventListener("click", degreeCel);
