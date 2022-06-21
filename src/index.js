@@ -35,10 +35,13 @@ function getTemperature(response) {
   let enterCity = document.querySelector("#enter-city-input");
   let city = enterCity.value;
   let h2 = document.querySelector("h2");
+  let feelsLikeData = document.querySelector("#feels-like-temp");
+  let feelsLike = Math.round(response.data.main.feels_like);
 
-  degreeDisplayed.innerHTML = celTempData;
   celTempData = Math.round(response.data.main.temp);
+  degreeDisplayed.innerHTML = celTempData;
   h2.innerHTML = `${country}, ${city}`;
+  feelsLikeData.innerHTML = `${feelsLike}°C`;
 }
 function getCurrentPosition(position) {
   let lon = position.coords.longitude;
