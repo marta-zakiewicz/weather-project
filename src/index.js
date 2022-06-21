@@ -53,10 +53,13 @@ function getCurrentTemperature(response) {
   let country = response.data.sys.country;
   let city = response.data.name;
   let h2 = document.querySelector("h2");
+  let feelsLikeData = document.querySelector("#feels-like-temp");
+  let feelsLike = Math.round(response.data.main.feels_like);
 
   celTempData = Math.round(response.data.main.temp);
   degreeDisplayed.innerHTML = celTempData;
   h2.innerHTML = `${country}, ${city}`;
+  feelsLikeData.innerHTML = `${feelsLike}°C`;
 }
 let searchBtn = document.querySelector("#search-btn");
 searchBtn.addEventListener("click", searchCity);
