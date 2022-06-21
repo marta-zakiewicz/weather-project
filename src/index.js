@@ -11,8 +11,51 @@ let days = [
   "Friday",
   "Saturday",
 ];
+let dayss = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 let day = days[now.getDay()];
+let day1 = dayss[now.getDay() + 1];
+let day2 = dayss[now.getDay() + 2];
+let day3 = dayss[now.getDay() + 3];
+let day4 = dayss[now.getDay() + 4];
+let day5 = dayss[now.getDay() + 5];
+let day6 = dayss[now.getDay() + 6];
 mainTime.innerHTML = `${day} ${hour}:${minute}`;
+let months = [
+  "Jan",
+  "Feb",
+  "Mar",
+  "Apr",
+  "May",
+  "Jun",
+  "Jul",
+  "Aug",
+  "Sep",
+  "Oct",
+  "Nov",
+  "Dec",
+];
+let month = months[now.getMonth()];
+
+dayNr = now.getDate();
+dayNr1 = now.getDate() + 1;
+dayNr2 = now.getDate() + 2;
+dayNr3 = now.getDate() + 3;
+dayNr4 = now.getDate() + 4;
+dayNr5 = now.getDate() + 5;
+dayNr6 = now.getDate() + 6;
+tmrw = document.querySelector("#day-1");
+day2After = document.querySelector("#day-2");
+day3After = document.querySelector("#day-3");
+day4After = document.querySelector("#day-4");
+day5After = document.querySelector("#day-5");
+day6After = document.querySelector("#day-6");
+
+tmrw.innerHTML = `${month} ${dayNr1}, ${day1}`;
+day2After.innerHTML = `${month} ${dayNr2}, ${day2}`;
+day3After.innerHTML = `${month} ${dayNr3}, ${day3}`;
+day4After.innerHTML = `${month} ${dayNr4}, ${day4}`;
+day5After.innerHTML = `${month} ${dayNr5}, ${dayss[0]}`;
+day6After.innerHTML = `${month} ${dayNr6}, ${dayss[1]}`;
 
 function searchCity(event) {
   event.preventDefault();
