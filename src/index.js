@@ -84,7 +84,11 @@ function getTemperature(response) {
   let feelsLike = Math.round(response.data.main.feels_like);
   let humidity = Math.round(response.data.main.humidity);
   let pressure = Math.round(response.data.main.pressure);
-
+  //let emoji = document.querySelector("#emoji-main");
+  //emoji.setAttribute(
+  //  "src",
+  //  `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
+  //);
   celTempData = Math.round(response.data.main.temp);
   degreeDisplayed.innerHTML = celTempData;
   h2.innerHTML = `${country}, ${city}`;
@@ -111,6 +115,11 @@ function getCurrentTemperature(response) {
   let feelsLike = Math.round(response.data.main.feels_like);
   let humidity = Math.round(response.data.main.humidity);
   let pressure = Math.round(response.data.main.pressure);
+  //let emoji = document.querySelector("#emoji-main");
+  //emoji.setAttribute(
+  //  "src",
+  //  `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
+  //);
 
   celTempData = Math.round(response.data.main.temp);
   degreeDisplayed.innerHTML = celTempData;
