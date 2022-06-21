@@ -36,12 +36,18 @@ function getTemperature(response) {
   let city = enterCity.value;
   let h2 = document.querySelector("h2");
   let feelsLikeData = document.querySelector("#feels-like-temp");
+  let humidityData = document.querySelector("#humidity");
+  let pressureData = document.querySelector("#pressure");
   let feelsLike = Math.round(response.data.main.feels_like);
+  let humidity = Math.round(response.data.main.humidity);
+  let pressure = Math.round(response.data.main.pressure);
 
   celTempData = Math.round(response.data.main.temp);
   degreeDisplayed.innerHTML = celTempData;
   h2.innerHTML = `${country}, ${city}`;
   feelsLikeData.innerHTML = `${feelsLike}°C`;
+  humidityData.innerHTML = `${humidity}%`;
+  pressureData.innerHTML = `${pressure} hPa`;
 }
 function getCurrentPosition(position) {
   let lon = position.coords.longitude;
@@ -57,12 +63,18 @@ function getCurrentTemperature(response) {
   let city = response.data.name;
   let h2 = document.querySelector("h2");
   let feelsLikeData = document.querySelector("#feels-like-temp");
+  let humidityData = document.querySelector("#humidity");
+  let pressureData = document.querySelector("#pressure");
   let feelsLike = Math.round(response.data.main.feels_like);
+  let humidity = Math.round(response.data.main.humidity);
+  let pressure = Math.round(response.data.main.pressure);
 
   celTempData = Math.round(response.data.main.temp);
   degreeDisplayed.innerHTML = celTempData;
   h2.innerHTML = `${country}, ${city}`;
   feelsLikeData.innerHTML = `${feelsLike}°C`;
+  humidityData.innerHTML = `${humidity}%`;
+  pressureData.innerHTML = `${pressure} hPa`;
 }
 let searchBtn = document.querySelector("#search-btn");
 searchBtn.addEventListener("click", searchCity);
