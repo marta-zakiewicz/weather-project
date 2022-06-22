@@ -80,21 +80,21 @@ function getTemperature(response) {
   let h2 = document.querySelector("h2");
   let feelsLikeData = document.querySelector("#feels-like-temp");
   let humidityData = document.querySelector("#humidity");
-  let pressureData = document.querySelector("#pressure");
+  let windData = document.querySelector("#wind-speed");
   let feelsLike = Math.round(response.data.main.feels_like);
   let humidity = Math.round(response.data.main.humidity);
-  let pressure = Math.round(response.data.main.pressure);
-  //let emoji = document.querySelector("#emoji-main");
-  //emoji.setAttribute(
-  //  "src",
-  //  `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
-  //);
+  let wind = Math.round(response.data.wind.speed);
+  let emoji = document.querySelector("#emoji-main");
+  emoji.setAttribute(
+    "src",
+    `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
+  );
   celTempData = Math.round(response.data.main.temp);
   degreeDisplayed.innerHTML = celTempData;
   h2.innerHTML = `${country}, ${city}`;
   feelsLikeData.innerHTML = `${feelsLike}°C`;
   humidityData.innerHTML = `${humidity}%`;
-  pressureData.innerHTML = `${pressure} hPa`;
+  windData.innerHTML = `${wind} km/h`;
 }
 function getCurrentPosition(position) {
   let lon = position.coords.longitude;
@@ -111,22 +111,23 @@ function getCurrentTemperature(response) {
   let h2 = document.querySelector("h2");
   let feelsLikeData = document.querySelector("#feels-like-temp");
   let humidityData = document.querySelector("#humidity");
-  let pressureData = document.querySelector("#pressure");
+  let windData = document.querySelector("#wind-speed");
   let feelsLike = Math.round(response.data.main.feels_like);
   let humidity = Math.round(response.data.main.humidity);
-  let pressure = Math.round(response.data.main.pressure);
-  //let emoji = document.querySelector("#emoji-main");
-  //emoji.setAttribute(
-  //  "src",
-  //  `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
-  //);
+  let wind = Math.round(response.data.wind.speed);
+  let emoji = document.querySelector("#emoji-main");
+  emoji.setAttribute(
+    "src",
+    `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
+  );
 
   celTempData = Math.round(response.data.main.temp);
   degreeDisplayed.innerHTML = celTempData;
   h2.innerHTML = `${country}, ${city}`;
   feelsLikeData.innerHTML = `${feelsLike}°C`;
   humidityData.innerHTML = `${humidity}%`;
-  pressureData.innerHTML = `${pressure} hPa`;
+  windData.innerHTML = `${wind} km/h`;
+  console.log(response.data);
 }
 let searchBtn = document.querySelector("#search-btn");
 searchBtn.addEventListener("click", searchCity);
