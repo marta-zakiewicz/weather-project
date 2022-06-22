@@ -13,10 +13,11 @@ li {
 input {
   width: 40%;
   height: 40px;
-  position: relative;
-  top: 10px;
-  right: 30px;
+  display: inline-block;
+  margin-top: 10px;
+  margin-left: -200px;
 }
+
 .time,
 .temp {
   font-size: smaller;
@@ -41,15 +42,15 @@ input {
 }
 #search-btn {
   position: relative;
-  top: -32px;
-  right: -230px;
+  top: -41px;
+  left: 90px;
   color: green;
   background-color: rgba(1, 186, 1, 0.468);
 }
 #current-loc-btn {
   position: relative;
-  top: -76px;
-  right: -370px;
+  top: -85px;
+  left: 231px;
   color: #df6507;
   background-color: #eb963ba0;
 }
@@ -63,10 +64,9 @@ input {
   text-align: center;
 }
 .card-now {
-  float: left;
-  right: 260px;
+  display: inline-block;
   bottom: -15px;
-  top: 70px;
+  top: 45px;
   background-color: #e1f1fb;
   max-height: 330px;
   border-color: rgba(30, 143, 255, 0.6);
@@ -75,8 +75,8 @@ input {
   color: forestgreen;
   text-align: left;
   position: relative;
-  left: 150px;
-  top: 60px;
+  top: 45px;
+  left: 182px;
 }
 .time-main {
   font-size: 35px;
@@ -138,6 +138,7 @@ input {
   color: dodgerblue;
   margin-top: 10px;
 }
+/* 
 .day-week {
   color: gray;
 }
@@ -157,9 +158,12 @@ input {
 .week6 {
   position: relative;
   top: -450px;
-}
+}*/
 .card-main {
-  max-height: 600px;
+  display: block;
+  margin: auto, 0;
+  max-height: 500px;
+  max-width: 800px;
   top: 10px;
 }
 .name {
@@ -182,4 +186,7 @@ p.name {
   margin-left: -205px;
   margin-top: -10px;
   font-weight: 250;
+}
+#enter-city-form {
+  margin-left: -100px;
 }

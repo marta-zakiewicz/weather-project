@@ -11,15 +11,17 @@ let days = [
   "Friday",
   "Saturday",
 ];
-let dayss = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 let day = days[now.getDay()];
+mainTime.innerHTML = `${day} ${hour}:${minute}`;
+/*
+let dayss = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 let day1 = dayss[now.getDay() + 1];
 let day2 = dayss[now.getDay() + 2];
 let day3 = dayss[now.getDay() + 3];
 let day4 = dayss[now.getDay() + 4];
 let day5 = dayss[now.getDay() + 5];
 let day6 = dayss[now.getDay() + 6];
-mainTime.innerHTML = `${day} ${hour}:${minute}`;
+
 let months = [
   "Jan",
   "Feb",
@@ -56,7 +58,7 @@ day3After.innerHTML = `${month} ${dayNr3}, ${day3}`;
 day4After.innerHTML = `${month} ${dayNr4}, ${day4}`;
 day5After.innerHTML = `${month} ${dayNr5}, ${dayss[0]}`;
 day6After.innerHTML = `${month} ${dayNr6}, ${dayss[1]}`;
-
+*/
 function searchCity(event) {
   event.preventDefault();
   let enterCity = document.querySelector("#enter-city-input");
