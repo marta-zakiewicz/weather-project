@@ -167,3 +167,10 @@ p.name {
   top: 10px;
   left: 70px;
 }
+div.wind {
+  margin-left: -1px;
+  margin-right: -1px;
+}
+p.name {
+  margin-left: -70px;
+}

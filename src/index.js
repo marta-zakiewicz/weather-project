@@ -127,7 +127,6 @@ function getCurrentTemperature(response) {
   feelsLikeData.innerHTML = `${feelsLike}°C`;
   humidityData.innerHTML = `${humidity}%`;
   windData.innerHTML = `${wind} km/h`;
-  console.log(response.data);
 }
 let searchBtn = document.querySelector("#search-btn");
 searchBtn.addEventListener("click", searchCity);
