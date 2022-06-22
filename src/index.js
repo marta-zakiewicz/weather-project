@@ -91,6 +91,9 @@ function getTemperature(response) {
     "src",
     `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
   );
+  let weatherDisc = document.querySelector(".weather-disc");
+  let weather = response.data.weather[0].description;
+  weatherDisc.innerHTML = weather;
   celTempData = Math.round(response.data.main.temp);
   degreeDisplayed.innerHTML = celTempData;
   h2.innerHTML = `${country}, ${city}`;
@@ -122,7 +125,9 @@ function getCurrentTemperature(response) {
     "src",
     `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
   );
-
+  let weatherDisc = document.querySelector(".weather-disc");
+  let weather = response.data.weather[0].description;
+  weatherDisc.innerHTML = weather;
   celTempData = Math.round(response.data.main.temp);
   degreeDisplayed.innerHTML = celTempData;
   h2.innerHTML = `${country}, ${city}`;
