@@ -83,12 +83,15 @@ input {
   text-align: center;
   font-weight: 600;
   color: dodgerblue;
+  margin-bottom: 0px;
 }
 .temp-main {
   font-weight: 400;
   display: block;
   margin: 0 auto;
   font-size: 65px;
+  margin-top: 20px;
+  margin-bottom: -10px;
 }
 .main-temp {
   display: inline;
@@ -173,4 +176,10 @@ div.wind {
 }
 p.name {
   margin-left: -70px;
+}
+.weather-disc {
+  margin-bottom: 0px;
+  margin-left: -205px;
+  margin-top: -10px;
+  font-weight: 250;
 }
