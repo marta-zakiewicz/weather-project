@@ -42,21 +42,22 @@ input {
 }
 #search-btn {
   position: relative;
-  top: -41px;
-  left: 90px;
-  color: green;
-  background-color: rgba(1, 186, 1, 0.468);
+  top: -42px;
+  left: 60px;
+  color: rgba(0, 128, 0, 0.799);
+  background-color: rgba(1, 186, 1, 0.251);
 }
 #current-loc-btn {
   position: relative;
-  top: -85px;
-  left: 231px;
-  color: #df6507;
-  background-color: #eb963ba0;
+  top: -86px;
+  left: 200px;
+  color: #df6507ae;
+  background-color: #eb963b56;
 }
 .data {
   color: dodgerblue;
   text-align: center;
+  font-weight: 300;
 }
 .card {
   background-color: #eff7fc;
@@ -75,8 +76,10 @@ input {
   color: forestgreen;
   text-align: left;
   position: relative;
-  top: 45px;
-  left: 182px;
+  left: 150px;
+  top: 30px;
+  font-weight: 300;
+  font-size: x-large;
 }
 .time-main {
   font-size: 35px;
@@ -84,6 +87,7 @@ input {
   font-weight: 600;
   color: dodgerblue;
   margin-bottom: 0px;
+  font-weight: 450;
 }
 .temp-main {
   font-weight: 400;
@@ -132,34 +136,16 @@ input {
 }
 .emoji-week {
   font-size: 50px;
+  margin-top: -25px;
 }
 .temp-week {
   font-size: 40px;
+  font-weight: 300;
   color: dodgerblue;
-  margin-top: 10px;
+  opacity: 0.8;
+  margin-top: -5px;
 }
-/* 
-.day-week {
-  color: gray;
-}
-.week {
-  position: relative;
-  left: 530px;
-  bottom: 400px;
-}
-.week1,
-.week2,
-.week3 {
-  position: relative;
-  top: -480px;
-}
-.week4,
-.week5,
-.week6 {
-  position: relative;
-  top: -450px;
-}*/
-.card-main {
+d-main {
   display: block;
   margin: auto, 0;
   max-height: 500px;
@@ -189,4 +175,35 @@ p.name {
 }
 #enter-city-form {
   margin-left: -100px;
+}
+.day-week {
+  opacity: 0.6;
+  margin-bottom: 0px;
+  margin-top: -10px;
+  font-weight: 250;
+}
+.week {
+  max-height: 130px;
+  width: 100px;
+  margin: 8px;
+  background-color: rgba(172, 226, 255, 0.325);
+  border: none;
+}
+
+.row-forecast {
+  margin-top: -80px;
+}
+#main-day-card {
+  margin-top: -19px;
+}
+
+.card-padding {
+  padding-left: 0px;
+  padding-right: 0px;
+}
+.wind-speed-details,
+.humidity-details,
+.temp-details {
+  opacity: 0.9;
+  font-weight: 500;
 }
