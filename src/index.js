@@ -59,6 +59,7 @@ day4After.innerHTML = `${month} ${dayNr4}, ${day4}`;
 day5After.innerHTML = `${month} ${dayNr5}, ${dayss[0]}`;
 day6After.innerHTML = `${month} ${dayNr6}, ${dayss[1]}`;
 */
+
 function displayForecast() {
   let forecastElement = document.querySelector(".forecast");
   let forecastHTML = `<div class="row">`;
@@ -81,7 +82,11 @@ function displayForecast() {
   forecastHTML = forecastHTML + `</div>`;
   forecastElement.innerHTML = forecastHTML;
 }
-
+function getForecast(coordinates) {
+  let apiKey = `6668a73a7d1f87813026a65c47730579`;
+  let apiUrl = `https://api.openweathermap.org/data/3.0/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}$units=metric`;
+  axios.get(apiUrl).then(displayForecast);
+}
 function searchCity(event) {
   event.preventDefault();
   let enterCity = document.querySelector("#enter-city-input");
@@ -123,6 +128,7 @@ function getTemperature(response) {
   feelsLikeData.innerHTML = `${feelsLike}°C`;
   humidityData.innerHTML = `${humidity}%`;
   windData.innerHTML = `${wind} km/h`;
+  getForecast(response.data.coord);
 }
 function getCurrentPosition(position) {
   let lon = position.coords.longitude;
@@ -157,6 +163,7 @@ function getCurrentTemperature(response) {
   feelsLikeData.innerHTML = `${feelsLike}°C`;
   humidityData.innerHTML = `${humidity}%`;
   windData.innerHTML = `${wind} km/h`;
+  getForecast(response.data.coord);
 }
 let searchBtn = document.querySelector("#search-btn");
 searchBtn.addEventListener("click", searchCity);
@@ -184,5 +191,3 @@ currentLocBtn.addEventListener(
   "click",
   navigator.geolocation.getCurrentPosition(getCurrentPosition)
 );
-
-displayForecast();
