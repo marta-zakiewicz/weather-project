@@ -59,6 +59,29 @@ day4After.innerHTML = `${month} ${dayNr4}, ${day4}`;
 day5After.innerHTML = `${month} ${dayNr5}, ${dayss[0]}`;
 day6After.innerHTML = `${month} ${dayNr6}, ${dayss[1]}`;
 */
+function displayForecast() {
+  let forecastElement = document.querySelector(".forecast");
+  let forecastHTML = `<div class="row">`;
+  let days = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+  days.forEach(function (day) {
+    forecastHTML =
+      forecastHTML +
+      `
+            <div class="col-2">
+              <div class="card week week1">
+                <div class="card-body card-forecast">
+                  <p class="day-week" id="day-1">Dec 23, ${day}</p>
+                  <div class="temp-week" id="temp-1">4°C</div>
+                  <div class="emoji-week" id="emoji-1">🌥</div>
+                </div>
+              </div>
+            </div>
+`;
+  });
+  forecastHTML = forecastHTML + `</div>`;
+  forecastElement.innerHTML = forecastHTML;
+}
+
 function searchCity(event) {
   event.preventDefault();
   let enterCity = document.querySelector("#enter-city-input");
@@ -161,3 +184,5 @@ currentLocBtn.addEventListener(
   "click",
   navigator.geolocation.getCurrentPosition(getCurrentPosition)
 );
+
+displayForecast();

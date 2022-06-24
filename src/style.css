@@ -190,20 +190,24 @@ p.name {
   border: none;
 }
 
-.row-forecast {
-  margin-top: -80px;
+.forecast {
+  margin-top: -90px;
 }
 #main-day-card {
   margin-top: -19px;
 }
 
-.card-padding {
+.card-forecast {
   padding-left: 0px;
   padding-right: 0px;
+  padding-bottom: 0px;
 }
 .wind-speed-details,
 .humidity-details,
 .temp-details {
   opacity: 0.9;
   font-weight: 500;
+}
+.col-2 {
+  width: 106.5px;
 }
