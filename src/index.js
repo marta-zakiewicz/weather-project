@@ -1,90 +1,75 @@
-let now = new Date();
-let hour = now.getHours();
-let minute = (now.getMinutes() < 10 ? "0" : "") + now.getMinutes();
-let mainTime = document.querySelector(".time-main");
-let days = [
-  "Sunday",
-  "Monday",
-  "Tuesday",
-  "Wednesday",
-  "Thursday",
-  "Friday",
-  "Saturday",
-];
-let day = days[now.getDay()];
-mainTime.innerHTML = `${day} ${hour}:${minute}`;
-/*
-let dayss = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
-let day1 = dayss[now.getDay() + 1];
-let day2 = dayss[now.getDay() + 2];
-let day3 = dayss[now.getDay() + 3];
-let day4 = dayss[now.getDay() + 4];
-let day5 = dayss[now.getDay() + 5];
-let day6 = dayss[now.getDay() + 6];
+function formatDate(timestamp) {
+  let date = new Date(timestamp);
+  let hours = date.getHours();
+  if (hours < 10) {
+    hours = `0${hours}`;
+  }
+  let minutes = date.getMinutes();
+  if (minutes < 10) {
+    minutes = `0${minutes}`;
+  }
 
-let months = [
-  "Jan",
-  "Feb",
-  "Mar",
-  "Apr",
-  "May",
-  "Jun",
-  "Jul",
-  "Aug",
-  "Sep",
-  "Oct",
-  "Nov",
-  "Dec",
-];
-let month = months[now.getMonth()];
+  let days = [
+    "Sunday",
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+  ];
+  let day = days[date.getDay()];
+  return `${day} ${hours}:${minutes}`;
+}
 
-dayNr = now.getDate();
-dayNr1 = now.getDate() + 1;
-dayNr2 = now.getDate() + 2;
-dayNr3 = now.getDate() + 3;
-dayNr4 = now.getDate() + 4;
-dayNr5 = now.getDate() + 5;
-dayNr6 = now.getDate() + 6;
-tmrw = document.querySelector("#day-1");
-day2After = document.querySelector("#day-2");
-day3After = document.querySelector("#day-3");
-day4After = document.querySelector("#day-4");
-day5After = document.querySelector("#day-5");
-day6After = document.querySelector("#day-6");
+function formatDay(timestamp) {
+  let date = new Date(timestamp * 1000);
+  let day = date.getDay();
+  let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 
-tmrw.innerHTML = `${month} ${dayNr1}, ${day1}`;
-day2After.innerHTML = `${month} ${dayNr2}, ${day2}`;
-day3After.innerHTML = `${month} ${dayNr3}, ${day3}`;
-day4After.innerHTML = `${month} ${dayNr4}, ${day4}`;
-day5After.innerHTML = `${month} ${dayNr5}, ${dayss[0]}`;
-day6After.innerHTML = `${month} ${dayNr6}, ${dayss[1]}`;
-*/
-
-function displayForecast() {
+  return days[day];
+}
+function displayForecast(response) {
+  let forecast = response.data.daily;
   let forecastElement = document.querySelector(".forecast");
   let forecastHTML = `<div class="row">`;
-  let days = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
-  days.forEach(function (day) {
-    forecastHTML =
-      forecastHTML +
-      `
+
+  forecast.forEach(function (forecastDay, index) {
+    if (index < 6) {
+      forecastHTML =
+        forecastHTML +
+        `
             <div class="col-2">
               <div class="card week week1">
                 <div class="card-body card-forecast">
-                  <p class="day-week" id="day-1">Dec 23, ${day}</p>
-                  <div class="temp-week" id="temp-1">4°C</div>
-                  <div class="emoji-week" id="emoji-1">🌥</div>
+                  <p class="day-week" id="day">Dec 23, ${formatDay(
+                    forecastDay.dt
+                  )}</p>
+                  <div class="temp-week" id="temp">${Math.round(
+                    forecastDay.temp.day
+                  )}°</div>
+                  <div class="emoji-week" id="emoji">  
+                    <img
+                        src="http://openweathermap.org/img/wn/${
+                          forecastDay.weather[0].icon
+                        }@2x.png"
+                        alt=""
+                        width="50"
+
+                      />           
+                  </div>
                 </div>
               </div>
             </div>
 `;
+    }
   });
   forecastHTML = forecastHTML + `</div>`;
   forecastElement.innerHTML = forecastHTML;
 }
 function getForecast(coordinates) {
   let apiKey = `6668a73a7d1f87813026a65c47730579`;
-  let apiUrl = `https://api.openweathermap.org/data/3.0/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}$units=metric`;
+  let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=metric`;
   axios.get(apiUrl).then(displayForecast);
 }
 function searchCity(event) {
@@ -115,10 +100,12 @@ function getTemperature(response) {
   let humidity = Math.round(response.data.main.humidity);
   let wind = Math.round(response.data.wind.speed);
   let emoji = document.querySelector("#emoji-main");
+  let dateElement = document.querySelector(".time-main");
   emoji.setAttribute(
     "src",
     `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
   );
+  dateElement.innerHTML = formatDate(response.data.dt * 1000);
   let weatherDisc = document.querySelector(".weather-disc");
   let weather = response.data.weather[0].description;
   weatherDisc.innerHTML = weather;
@@ -128,7 +115,7 @@ function getTemperature(response) {
   feelsLikeData.innerHTML = `${feelsLike}°C`;
   humidityData.innerHTML = `${humidity}%`;
   windData.innerHTML = `${wind} km/h`;
-  getForecast(response.data.coord);
+  getForecast(city);
 }
 function getCurrentPosition(position) {
   let lon = position.coords.longitude;
@@ -150,14 +137,18 @@ function getCurrentTemperature(response) {
   let humidity = Math.round(response.data.main.humidity);
   let wind = Math.round(response.data.wind.speed);
   let emoji = document.querySelector("#emoji-main");
+  let dateElement = document.querySelector(".time-main");
+
   emoji.setAttribute(
     "src",
     `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
   );
+
   let weatherDisc = document.querySelector(".weather-disc");
   let weather = response.data.weather[0].description;
   weatherDisc.innerHTML = weather;
   celTempData = Math.round(response.data.main.temp);
+  dateElement.innerHTML = formatDate(response.data.dt * 1000);
   degreeDisplayed.innerHTML = celTempData;
   h2.innerHTML = `${country}, ${city}`;
   feelsLikeData.innerHTML = `${feelsLike}°C`;
